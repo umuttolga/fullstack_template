@@ -1,1 +1,1 @@
-export const inputStyle = 'p-2'
+export const   inputStyle = 'p-2'

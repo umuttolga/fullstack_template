@@ -16,14 +16,14 @@ export const UsersList = () => {
         userData()
     }, [])
     return (
-      <body className="grid grid-flow-row border-2 w-screen p-4 place-content-center h-full">
+      <div className="grid auto-rows-min border-2 w-screen p-4 gap-12 justify-center  min-h-screen">
           <h1>
               Welcome to User List Page
           </h1>
-          <div>
+          <div className="grid auto-rows-min gap-8 mx-auto">
             <AddUser/>
             <UserListDisplay/>
           </div>
-      </body>
+      </div>
     )
   }
