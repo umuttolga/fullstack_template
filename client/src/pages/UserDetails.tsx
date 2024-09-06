@@ -32,17 +32,18 @@ export const UserDetails = () => {
           <div className={styles.headerStyle}>
               Welcome to User Details Page
           </div>
-          <div>
+          <div className={styles.sectionStyle}>
         {userDetails && ( <ul key={userDetails.id}>
                   <li>{userDetails.name}</li>
                   <li>{userDetails.email}</li>
                 </ul>)}
-          </div>
-          <div>
-            <label>Change User Details</label>
+                <div className="grid grid-flow-row gap-4">
+                
+            <label className="font-bold">Change User Details</label>
             <AddUser put={true}/>
+                </div>
+          <span className="text-red-500" onClick={handleDelUser}>Remove User</span>
           </div>
-          <span onClick={handleDelUser}>Remove User</span>
       </section>
     )
   }

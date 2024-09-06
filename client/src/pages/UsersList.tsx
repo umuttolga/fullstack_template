@@ -21,7 +21,7 @@ export const UsersList = () => {
           <h1 className={styles.headerStyle}>
               Welcome to User List Page
           </h1>
-          <div className="grid auto-rows-min mt-12 gap-8 mx-auto">
+          <div className={styles.sectionStyle}>
             <AddUser/>
             <UserListDisplay/>
           </div>
