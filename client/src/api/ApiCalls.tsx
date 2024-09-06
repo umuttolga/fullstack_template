@@ -19,7 +19,7 @@ export const addUser = async (name:string, email:string) => {
         headers:{
           "Content-Type": 'application/json'
         },
-        body: JSON.stringify({'name': name, 'email': email })
+        body: JSON.stringify({'name': name, 'email': email , "password": "defaultpassword"})
       })
       const data = await response.json()
       return data
@@ -60,6 +60,22 @@ export const deleteUser = async (userId:number) => {
   try {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/user/${userId}`, {
       method:'DELETE',
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const login = async (email:string, password:string) => {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
+      method:'POST',
+      headers:{
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify({'password': password, 'email': email })
     })
     const data = await response.json()
     return data
