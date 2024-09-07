@@ -1,1 +1,1 @@
-# fullstack_template
+# FullStack Template with JWT Authentication
