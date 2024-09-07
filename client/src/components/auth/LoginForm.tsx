@@ -1,18 +1,24 @@
 import { useRef } from "react"
 import { styles } from "../../styles/styles"
 import { login } from "../../api/ApiCalls"
+import { useNavigate } from "react-router-dom"
 
 const LoginForm = () => {
     const emailRef = useRef()
     const passRef = useRef()
+    const nav = useNavigate()
 
     const handleLogin = async (e:any) => {
         e.preventDefault()
         //@ts-ignore
         const response = await login(emailRef.current.value,passRef.current.value)
-        console.log(response)
-        // window.location.reload()
+        localStorage.setItem("token", response.access_token)
+        nav("/")
     }
+
+   
+
+
 
  
 

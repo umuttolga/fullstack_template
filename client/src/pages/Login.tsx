@@ -1,9 +1,14 @@
-import { login } from "../api/ApiCalls"
+import { useEffect } from "react"
 import LoginForm from "../components/auth/LoginForm"
-import AddUser from "../components/user list/AddUser"
 import { styles } from "../styles/styles"
 
 export const Login = () => {
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+  }
+  useEffect(() => {
+    handleLogout()
+  }, [])
   return (
     <section className={styles.mainSectionContiner}>
         <h3 className={styles.headerStyle}>Login Screen</h3>

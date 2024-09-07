@@ -10,7 +10,8 @@ user_parser.add_argument('email', type=str, required=True, help="Email cannot be
 user_parser.add_argument('password', type=str,required=True, help="Password cannot be blank!")
 
 class UserResource(Resource):
-    @jwt_required()
+    method_decorators = [jwt_required()]
+
     def get(self, user_id):
         user = User.query.get_or_404(user_id)
         return {'id': user.id, 'name': user.name, 'email': user.email}
@@ -30,6 +31,7 @@ class UserResource(Resource):
         return {'message': 'User deleted successfully'}
 
 class UserListResource(Resource):
+    @jwt_required()
     def get(self):
         users = User.query.all()
         return [{'id': user.id, 'name': user.name, 'email': user.email} for user in users]
@@ -46,7 +48,7 @@ class UserListResource(Resource):
 class AuthResource(Resource):
   def post(self):
       args = user_parser.parse_args()
-      print(args["password"])
+    #   print(args["password"])
       user = User.query.filter_by(email=args['email']).first_or_404()
       if user and user.check_password(args['password']):
         access_token = create_access_token(identity=user.id)
